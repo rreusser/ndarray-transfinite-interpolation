@@ -1,0 +1,21 @@
+{
+  "title": "ndarray-transfinite-interpolation",
+  "appName": "ndarray-transfinite-interpolation",
+  "camelizedAppName": "ndarrayTransfiniteInterpolation",
+  "description": "Fill an n-dimensional array by interpolation function that define the boundaries",
+  "ghOrgOrUser": "scijs",
+  "metaTags": {
+    "site": "ndarray-transfinite-interpolation",
+    "title": "ndarray-transfinite-interpolation",
+    "description": "Fill an n-dimensional array by interpolation function that define the boundaries",
+    "twitter:card": "summary_large_image",
+    "twitter:title": "ndarray-transfinite-interpolation",
+    "twitter:site": "@your_twitter_handle",
+    "twitter:description": "Fill an n-dimensional array by interpolation function that define the boundaries",
+    "twitter:image": "images/screenshot.png",
+    "og:image": "images/screenshot.png",
+    "og:site_name": "ndarray-transfinite-interpolation",
+    "og:title": "ndarray-transfinite-interpolation",
+    "og:description": "Fill an n-dimensional array by interpolation function that define the boundaries"
+  }
+}
