@@ -8,3 +8,4 @@ window.createGeometry = require('ndarray-grid-connectivity');
 window.vectorFill = require('ndarray-vector-fill');
 window.extend = require('util-extend');
 window.createCamera = require('./camera');
+window.flatten = require('flatten');
