@@ -39,7 +39,9 @@ var edges = [[
 tfi(zeros([11, 11, 2]), edges);
 ```
 
-You can perturb the faces with functions:
+---
+
+You can perturb the edges with functions:
 
 <p align="center">
   <a href="http://demos.rickyreusser.com/ndarray-transfinite-interpolation/square2.html" target="_blank">
@@ -58,6 +60,8 @@ tfi(zeros([11, 11, 2]), [[
   u => [u, 1]
 ]]);
 ```
+
+----
 
 Now we can get creative. So far we've defined edges, but you can also define internal curves through which the grid passes.
 
@@ -79,6 +83,8 @@ tfi(zeros([11, 11, 2]), [[
   u => [u, 1]
 ]]);
 ```
+
+----
 
 Notice that although we've defined a straight line through the center, the grid on the righthand side is slightly perturbed in the *opposite* direcdtion. That's because of the [Lagrange interpolation](http://mathworld.wolfram.com/LagrangeInterpolatingPolynomial.html). A future version will include the option to use linear interpolation instead.
 
@@ -107,6 +113,8 @@ const t = [[0, 1], [0, 0.2, 1]]
 const A = tfi(zeros([11, 11, 2]), edges, t);
 ```
 
+----
+
 Finally you can pass functions that map `[0, 1] ⟶ [0, 1]` or else an ndarray or array of matching length that defines the parameter values at which the respective curves are *evaluated*:
 
 <p align="center">
@@ -132,6 +140,8 @@ const mapping = [
 const A = tfi(zeros([11, 11, 2]), edges, null, mapping);
 ```
 
+----
+
 There's no reason to constrain things to two dimensions. You can interpolate a surface in three dimensions:
 
 <p align="center">
@@ -141,6 +151,8 @@ There's no reason to constrain things to two dimensions. You can interpolate a s
     Try it out →
   </a>
 </p>
+
+----
 
 So far we've done surfaces in two or three dimensions. To create a volumetric mesh in three dimensions, imagine a cube parameterized by `[u, v, w]`, with `u ∈ [0, 1]`, `v ∈ [0, 1]`, and `w ∈ [0, 1]`. Each of the six faces is defined by a two-dimensional function. The input to transfinite interpolation is these functions. The easiest way to conceptualize it is as ordered pairs of opposing faces, the first set with `u` ommitted, then `v`, then finally with `w` ommitted.
 
@@ -166,6 +178,8 @@ var faces = [[
 
 tfi(zeros([11, 11, 11, 3]), faces);
 ```
+
+----
 
 Get fancy. One thing to watch for is that it's very easy to define curves that don't actually meet where they claim to. If they don't match up, you'll still get a decent result, but it might not be what you expect.
 
