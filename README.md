@@ -104,7 +104,7 @@ tfi(zeros([11, 11, 2]), [[
 
 const t = [[0, 1], [0, 0.2, 1]]
 
-const A = tfi(zeros([11, 11, 2], 'float32'), edges, t);
+const A = tfi(zeros([11, 11, 2]), edges, t);
 ```
 
 Finally you can pass functions that map `[0, 1] ⟶ [0, 1]` or else an ndarray or array of matching length that defines the parameter values at which the respective curves are *evaluated*:
@@ -129,7 +129,7 @@ const mapping = [
   [0, 0.15, 0.2, 0.35, 0.4, 0.55, 0.6, 0.75, 0.8, 0.95, 1]
 ];
 
-const A = tfi(zeros([11, 11, 2], 'float32'), edges, null, mapping);
+const A = tfi(zeros([11, 11, 2]), edges, null, mapping);
 ```
 
 There's no reason to constrain things to two dimensions. You can interpolate a surface in three dimensions:
