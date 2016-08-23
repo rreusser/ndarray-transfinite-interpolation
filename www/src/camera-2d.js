@@ -34,7 +34,7 @@ function createCamera2d (regl, props) {
     if (buttons & 1 && x0 !== undefined) {
       var dx = x - prevX;
       var dy = y - prevY;
-      var scale = window.innerHeight / cameraState.zoom * 0.5;
+      var scale = window.innerWidth / cameraState.zoom * 0.5;
       cameraState.center[0] -= dx / scale;
       cameraState.center[1] += dy / scale;
       cameraState.eye[0] -= dx / scale;
@@ -65,10 +65,10 @@ function createCamera2d (regl, props) {
         var ar = viewportWidth / viewportHeight;
         return ortho(
           cameraState.projection,
-          -1 * ar * cameraState.zoom,
-          1 * ar * cameraState.zoom,
           -1 * cameraState.zoom,
           1 * cameraState.zoom,
+          -1 / ar * cameraState.zoom,
+          1 / ar * cameraState.zoom,
           0.01,
           1000.0)
       }
