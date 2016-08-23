@@ -20,7 +20,7 @@ To create a planar mesh in two dimensions, imagine a unit square parameterized b
   <a href="http://demos.rickyreusser.com/ndarray-transfinite-interpolation/square.html" target="_blank">
     <img width="200" src="www/src/images/square.png">
     <br>
-    See demo (click button to edit on codepen) →
+    Try it out (click button to edit on codepen) →
   </a>
 </p>
 
@@ -45,7 +45,7 @@ You can perturb the faces with functions:
   <a href="http://demos.rickyreusser.com/ndarray-transfinite-interpolation/square2.html" target="_blank">
     <img width="200" src="www/src/images/square2.png">
     <br>
-    See demo →
+    Try it out →
   </a>
 </p>
 
@@ -65,7 +65,7 @@ Now we can get creative. So far we've defined edges, but you can also define int
   <a href="http://demos.rickyreusser.com/ndarray-transfinite-interpolation/square3.html" target="_blank">
     <img width="200" src="www/src/images/square3.png">
     <br>
-    See demo →
+    Try it out →
   </a>
 </p>
 
@@ -88,7 +88,7 @@ By passing an additional array of arrays, you can specify the parameter values a
   <a href="http://demos.rickyreusser.com/ndarray-transfinite-interpolation/square4.html" target="_blank">
     <img width="200" src="www/src/images/square4.png">
     <br>
-    See demo →
+    Try it out →
   </a>
 </p>
 
@@ -113,7 +113,7 @@ Finally you can pass functions that map `[0, 1] ⟶ [0, 1]` or else an ndarray o
   <a href="http://demos.rickyreusser.com/ndarray-transfinite-interpolation/square5.html" target="_blank">
     <img width="200" src="www/src/images/square5.png">
     <br>
-    See demo →
+    Try it out →
   </a>
 </p>
 
@@ -138,7 +138,7 @@ There's no reason to constrain things to two dimensions. You can interpolate a s
   <a href="http://demos.rickyreusser.com/ndarray-transfinite-interpolation/surface.html" target="_blank">
     <img width="300" src="www/src/images/surface.png">
     <br>
-    See demo →
+    Try it out →
   </a>
 </p>
 
@@ -148,7 +148,7 @@ So far we've done surfaces in two or three dimensions. To create a volumetric me
   <a href="http://demos.rickyreusser.com/ndarray-transfinite-interpolation/cube.html" target="_blank">
     <img width="300" src="www/src/images/cube.png">
     <br>
-    See demo →
+    Try it out →
   </a>
 </p>
 
@@ -173,7 +173,7 @@ Get fancy. One thing to watch for is that it's very easy to define curves that d
   <a href="http://demos.rickyreusser.com/ndarray-transfinite-interpolation/volume.html" target="_blank">
     <img width="300" src="www/src/images/volume.png">
     <br>
-    See demo →
+    Try it out →
   </a>
 </p>
 
