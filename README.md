@@ -93,7 +93,7 @@ By passing an additional array of arrays, you can specify the parameter values a
 </p>
 
 ```javascript
-const edges = [[
+tfi(zeros([11, 11, 2]), [[
   v => [0, v],
   v => [1, v]
 ], [
