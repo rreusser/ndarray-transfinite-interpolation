@@ -1,6 +1,6 @@
 # ndarray-transfinite-interpolation
 
-> Fill an n-dimensional array by interpolation function that define the boundaries
+> Fill an n-dimensional array by interpolating function that define the boundaries
 
 [![experimental][stability-experimental]][stability-url]
 <!--[![Build Status][travis-image]][travis-url]-->
@@ -43,9 +43,9 @@ You can perturb the faces with functions:
 
 <p align="center">
   <a href="http://demos.rickyreusser.com/ndarray-transfinite-interpolation/square2.html" target="_blank">
-    See demo →
     <img width="200" src="www/src/images/square2.png">
     <br>
+    See demo →
   </a>
 </p>
 
@@ -142,8 +142,15 @@ There's no reason to constrain things to two dimensions. You can interpolate a s
   </a>
 </p>
 
-
 So far we've done surfaces in two or three dimensions. To create a volumetric mesh in three dimensions, imagine a cube parameterized by `[u, v, w]`, with `u ∈ [0, 1]`, `v ∈ [0, 1]`, and `w ∈ [0, 1]`. Each of the six faces is defined by a two-dimensional function. The input to transfinite interpolation is these functions. The easiest way to conceptualize it is as ordered pairs of opposing faces, the first set with `u` ommitted, then `v`, then finally with `w` ommitted.
+
+<p align="center">
+  <a href="http://demos.rickyreusser.com/ndarray-transfinite-interpolation/cube.html" target="_blank">
+    <img width="300" src="www/src/images/cube.png">
+    <br>
+    See demo →
+  </a>
+</p>
 
 ```javascript
 var faces = [[

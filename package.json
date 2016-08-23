@@ -1,7 +1,7 @@
 {
   "name": "ndarray-transfinite-interpolation",
   "version": "1.0.0",
-  "description": "Fill an n-dimensional array by interpolation function that define the boundaries",
+  "description": "Fill an n-dimensional array by interpolating function that define the boundaries",
   "main": "index.js",
   "author": {
     "name": "Ricky Reusser",
