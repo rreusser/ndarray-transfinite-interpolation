@@ -17,7 +17,7 @@ module.exports = function drawMesh2d (regl, mesh, edges, options) {
 
   const camera = createCamera2d(regl, {
     center: options.center || [0.5, 0.5],
-    zoom: 0.6
+    zoom: 1.2
   });
 
   const drawLines = regl({

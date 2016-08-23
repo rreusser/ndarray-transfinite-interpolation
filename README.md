@@ -36,7 +36,7 @@ var edges = [[
   u => [u, 1]
 ]];
 
-tfi(zeros([11, 11, 11, 3]), edges);
+tfi(zeros([11, 11, 3]), edges);
 ```
 
 You can perturb the faces with functions:
@@ -70,7 +70,7 @@ Now we can get creative. So far we've defined edges, but you can also define int
 </p>
 
 ```javascript
-tfi(zeros([11, 11, 11, 3]), [[
+tfi(zeros([11, 11, 3]), [[
   v => [Math.sin(v * Math.PI * 2), v],
   v => [0.5, v],
   v => [1, v]
