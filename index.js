@@ -97,13 +97,19 @@ function getIvars (ivars, shape) {
   for (dim = 0; dim < dims; dim++) {
     if (ivars && ivars[dim]) {
       if (isndarray(ivars[dim])) {
-        getIvar[dim] = ivars[dim].get;
+        getIvar[dim] = ivars[dim].get.bind(ivars[dim]);
       } else if (Array.isArray(ivars[dim])) {
-        getIvar[dim] = function (i) {
-          return ivars[dim][i];
-        };
+        getIvar[dim] = (function (n) {
+          return function (i) {
+            return ivars[n][i];
+          }
+        })(dim);
       } else if (typeof ivars[dim] === 'function') {
-        getIvar[dim] = ivars[dim];
+        getIvar[dim] = (function (n) {
+          return function (x) {
+            return ivars[n](x / (shape[n] - 1));
+          }
+        })(dim);
       } else {
         throw new Error('Independent variable must be undefined, an ndarray, an Array, or a function.');
       }

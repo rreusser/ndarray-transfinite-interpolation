@@ -8,15 +8,173 @@
 <!--[![Dependency Status][david-dm-image]][david-dm-url]-->
 <!--[![Semistandard Style][semistandard-image]][semistandard-url]-->
 
-
 ## Introduction
+
+Given a set of functions bounding a domain (as well as internal contours, if desired), this module fills an [ndarray](https://github.com/scijs/ndarray) with an n-dimensional mesh. Its primary use is for creating computational grids.
+
+## Example
+
+To create a planar mesh in two dimensions, imagine a unit square parameterized by `[u, v]`, with `u ∈ [0, 1]`, and `v ∈ [0, 1]`. Each of the four edges is defined by a function of one variable. The input to transfinite interpolation is these functions. The easiest way to conceptualize it is as ordered pairs of opposing edges, the first set with `u` ommitted, then `v`.
+
+<p align="center">
+  <a href="http://demos.rickyreusser.com/ndarray-transfinite-interpolation/square.html" target="_blank">
+    <img width="200" src="www/src/images/square.png">
+    <br>
+    See demo →
+  </a>
+</p>
+
+```javascript
+var tfi = require('ndarray-transfinite-interpolation');
+var zeros = require('ndarray-scratch').zeros;
+
+var edges = [[
+  v => [0, v],
+  v => [1, v]
+], [
+  u => [u, 0],
+  u => [u, 1]
+]];
+
+tfi(zeros([11, 11, 11, 3]), edges);
+```
+
+You can perturb the faces with functions:
+
+<p align="center">
+  <a href="http://demos.rickyreusser.com/ndarray-transfinite-interpolation/square2.html" target="_blank">
+    See demo →
+    <img width="200" src="www/src/images/square2.png">
+    <br>
+  </a>
+</p>
+
+```javascript
+tfi(zeros([11, 11, 3]), [[
+  v => [Math.sin(v * Math.PI * 2), v],
+  v => [1, v]
+], [
+  u => [u, 0],
+  u => [u, 1]
+]]);
+```
+
+Now we can get creative. So far we've defined edges, but you can also define internal curves through which the grid passes.
+
+<p align="center">
+  <a href="http://demos.rickyreusser.com/ndarray-transfinite-interpolation/square3.html" target="_blank">
+    <img width="200" src="www/src/images/square3.png">
+    <br>
+    See demo →
+  </a>
+</p>
+
+```javascript
+tfi(zeros([11, 11, 11, 3]), [[
+  v => [Math.sin(v * Math.PI * 2), v],
+  v => [0.5, v],
+  v => [1, v]
+], [
+  u => [u, 0],
+  u => [u, 1]
+]]);
+```
+
+Notice that although we've defined a straight line through the center, the grid on the righthand side is slightly perturbed in the *opposite* direcdtion. That's because of the [Lagrange interpolation](http://mathworld.wolfram.com/LagrangeInterpolatingPolynomial.html). A future version will include the option to use linear interpolation instead.
+
+By passing an additional array of arrays, you can specify the parameter values at which the respective curves are defined:
+
+<p align="center">
+  <a href="http://demos.rickyreusser.com/ndarray-transfinite-interpolation/square4.html" target="_blank">
+    <img width="200" src="www/src/images/square4.png">
+    <br>
+    See demo →
+  </a>
+</p>
+
+```javascript
+const edges = [[
+  v => [0, v, 0],
+  v => [1, v, 0]
+], [
+  u => [u, 0, 0],
+  u => [u, 0.2, 0],
+  u => [u, 1, 0]
+]];
+
+const t = [[0, 1], [0, 0.2, 1]]
+
+const A = tfi(zeros([11, 11, 3], 'float32'), edges, t);
+```
+
+Finally you can pass functions that map `[0, 1] ⟶ [0, 1]` or else an ndarray or array of matching length that defines the parameter values at which the respective curves are *evaluated*:
+
+<p align="center">
+  <a href="http://demos.rickyreusser.com/ndarray-transfinite-interpolation/square5.html" target="_blank">
+    <img width="200" src="www/src/images/square5.png">
+    <br>
+    See demo →
+  </a>
+</p>
+
+
+```javascript
+const edges = [
+  [v => [0, v, 0], v => [1, v, 0]],
+  [u => [u, 0, 0], u => [u, 1, 0]]
+];
+
+const mapping = [
+  u => u * u * u,
+  [0, 0.15, 0.2, 0.35, 0.4, 0.55, 0.6, 0.75, 0.8, 0.95, 1]
+];
+
+const A = tfi(zeros([11, 11, 3], 'float32'), edges, null, mapping);
+```
+
+There's no reason to constrain things to two dimensions. You can interpolate a surface in three dimensions:
+
+<p align="center">
+  <a href="http://demos.rickyreusser.com/ndarray-transfinite-interpolation/surface.html" target="_blank">
+    <img width="300" src="www/src/images/surface.png">
+    <br>
+    See demo →
+  </a>
+</p>
+
+
+So far we've done surfaces in two or three dimensions. To create a volumetric mesh in three dimensions, imagine a cube parameterized by `[u, v, w]`, with `u ∈ [0, 1]`, `v ∈ [0, 1]`, and `w ∈ [0, 1]`. Each of the six faces is defined by a two-dimensional function. The input to transfinite interpolation is these functions. The easiest way to conceptualize it is as ordered pairs of opposing faces, the first set with `u` ommitted, then `v`, then finally with `w` ommitted.
+
+```javascript
+var faces = [[
+    (v, w) => [0, v, w],
+    (v, w) => [1, v, w]
+  ], [
+    (u, w) => [u, 0, w],
+    (u, w) => [u, 1, w]
+  ], [
+    (u, v) => [u, v, 0],
+    (u, v) => [u, v, 1]
+]];
+
+tfi(zeros([11, 11, 11, 3]), faces);
+```
+
+Get fancy. One thing to watch for is that it's very easy to define curves that don't actually meet where they claim to. If they don't match up, you'll still get a decent result, but it might not be what you expect.
+
+<p align="center">
+  <a href="http://demos.rickyreusser.com/ndarray-transfinite-interpolation/volume.html" target="_blank">
+    <img width="300" src="www/src/images/volume.png">
+    <br>
+    See demo →
+  </a>
+</p>
+
+
 
 ## License
 
 &copy; 2016 Ricky Reusser. MIT License.
-
-
-
 
 <!-- BADGES -->
 
