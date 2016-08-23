@@ -13,7 +13,6 @@ const mapping = [
 const A = tfi(zeros([11, 11, 3], 'float32'), edges, null, mapping);
 
 drawMesh2d(regl(), A, edges, {
-  stride: [1, 1],
-  center: [0.5, 0.5]
+  stride: [1, 1]
 });
 

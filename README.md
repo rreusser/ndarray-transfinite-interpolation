@@ -20,7 +20,7 @@ To create a planar mesh in two dimensions, imagine a unit square parameterized b
   <a href="http://demos.rickyreusser.com/ndarray-transfinite-interpolation/square.html" target="_blank">
     <img width="200" src="www/src/images/square.png">
     <br>
-    See demo →
+    See demo (click button to edit on codepen) →
   </a>
 </p>
 
@@ -177,6 +177,10 @@ Get fancy. One thing to watch for is that it's very easy to define curves that d
   </a>
 </p>
 
+
+## Install
+
+Not yet on npm. Useful, but needs cleanup.
 
 ## API
 

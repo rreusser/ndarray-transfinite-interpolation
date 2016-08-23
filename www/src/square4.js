@@ -14,7 +14,6 @@ const t = [[0, 1], [0, 0.2, 1]]
 const A = tfi(zeros([11, 11, 3], 'float32'), edges, t);
 
 drawMesh2d(regl(), A, edges, {
-  stride: [1, 1],
-  center: [0.5, 0.5]
+  stride: [1, 1]
 });
 
