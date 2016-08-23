@@ -178,6 +178,21 @@ Get fancy. One thing to watch for is that it's very easy to define curves that d
 </p>
 
 
+## API
+
+#### `require('ndarray-transfinite-interpolation')(grid, bounds[, t[, ivars]])`
+
+Fill ndarray `grid` with an evaluation of the specified grid. Options are:
+
+- `grid`: An [ndarray](http://github.com/scijs/ndarray) into which the mesh is evaluated
+- `bounds`: An array of arrays containing for each dimension a list of functions that define the mesh. The trailing dimension of `grid` is expected to equal the number of dimensions (equal the length of the array) in `bounds`. Each function is parameterized from 0 to 1 and is expected to return an `Array` with length equal to the trailing dimension of `grid`.
+- `t`: An array of arrays specifying the respective value of the parameter at which `bounds` are defined. See above for illustration.
+- `ivars`: Independent variables at which to evaluate the grid into `grid`. These maybe be a function that maps `[0, 1] → [0, 1]` or else a one-dimensional array (or ndarray) of length equal to the corresponding dimension of `grid`. If not specified, the grid is evaluated with uniform spacing from 0 to 1.
+
+## See also
+
+- [ndarray-vector-fill](https://github.com/scijs/ndarray-vector-fill)
+- [ndarray-grid-connectivity](https://github.com/scijs/ndarray-grid-connectivity)
 
 ## License
 
