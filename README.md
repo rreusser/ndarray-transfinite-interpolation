@@ -1,6 +1,6 @@
 # ndarray-transfinite-interpolation
 
-> Fill an n-dimensional array by interpolating function that define the boundaries
+> Fill an n-dimensional array by interpolating functions that define the boundaries
 
 [![experimental][stability-experimental]][stability-url]
 <!--[![Build Status][travis-image]][travis-url]-->
