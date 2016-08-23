@@ -36,7 +36,7 @@ var edges = [[
   u => [u, 1]
 ]];
 
-tfi(zeros([11, 11, 3]), edges);
+tfi(zeros([11, 11, 2]), edges);
 ```
 
 You can perturb the faces with functions:
@@ -50,7 +50,7 @@ You can perturb the faces with functions:
 </p>
 
 ```javascript
-tfi(zeros([11, 11, 3]), [[
+tfi(zeros([11, 11, 2]), [[
   v => [Math.sin(v * Math.PI * 2), v],
   v => [1, v]
 ], [
@@ -70,7 +70,7 @@ Now we can get creative. So far we've defined edges, but you can also define int
 </p>
 
 ```javascript
-tfi(zeros([11, 11, 3]), [[
+tfi(zeros([11, 11, 2]), [[
   v => [Math.sin(v * Math.PI * 2), v],
   v => [0.5, v],
   v => [1, v]
@@ -94,17 +94,17 @@ By passing an additional array of arrays, you can specify the parameter values a
 
 ```javascript
 const edges = [[
-  v => [0, v, 0],
-  v => [1, v, 0]
+  v => [0, v],
+  v => [1, v]
 ], [
-  u => [u, 0, 0],
-  u => [u, 0.2, 0],
-  u => [u, 1, 0]
+  u => [u, 0],
+  u => [u, 0.2],
+  u => [u, 1]
 ]];
 
 const t = [[0, 1], [0, 0.2, 1]]
 
-const A = tfi(zeros([11, 11, 3], 'float32'), edges, t);
+const A = tfi(zeros([11, 11, 2], 'float32'), edges, t);
 ```
 
 Finally you can pass functions that map `[0, 1] ⟶ [0, 1]` or else an ndarray or array of matching length that defines the parameter values at which the respective curves are *evaluated*:
@@ -120,8 +120,8 @@ Finally you can pass functions that map `[0, 1] ⟶ [0, 1]` or else an ndarray o
 
 ```javascript
 const edges = [
-  [v => [0, v, 0], v => [1, v, 0]],
-  [u => [u, 0, 0], u => [u, 1, 0]]
+  [v => [0, v], v => [1, v]],
+  [u => [u, 0], u => [u, 1]]
 ];
 
 const mapping = [
@@ -129,7 +129,7 @@ const mapping = [
   [0, 0.15, 0.2, 0.35, 0.4, 0.55, 0.6, 0.75, 0.8, 0.95, 1]
 ];
 
-const A = tfi(zeros([11, 11, 3], 'float32'), edges, null, mapping);
+const A = tfi(zeros([11, 11, 2], 'float32'), edges, null, mapping);
 ```
 
 There's no reason to constrain things to two dimensions. You can interpolate a surface in three dimensions:
