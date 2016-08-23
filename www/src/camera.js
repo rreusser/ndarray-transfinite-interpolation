@@ -13,9 +13,9 @@ function createCamera (regl, props) {
     view: identity(new Float32Array(16)),
     projection: identity(new Float32Array(16)),
     center: new Float32Array(props.center || 3),
-    theta: props.theta || 0,
+    theta: props.theta || Math.PI * 0.5,
     phi: props.phi || 0,
-    distance: Math.log(props.distance || 10.0),
+    distance: Math.log(props.distance || 3.0),
     eye: new Float32Array(3),
     up: new Float32Array(props.up || [0, 1, 0])
   }

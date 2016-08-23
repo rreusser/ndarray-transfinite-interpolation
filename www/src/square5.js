@@ -12,7 +12,8 @@ const mapping = [
 
 const A = tfi(zeros([11, 11, 3], 'float32'), edges, null, mapping);
 
+// drawMesh3d(regl(), A, edges, {
 drawMesh2d(regl(), A, edges, {
-  stride: [1, 1]
+  stride: [1, 1],
+  camera: {center: [0.5, 0.5, 0.0]}
 });
-

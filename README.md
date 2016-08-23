@@ -207,6 +207,13 @@ Fill ndarray `grid` with an evaluation of the specified grid. Options are:
 - `t`: An array of arrays specifying the respective value of the parameter at which `bounds` are defined. See above for illustration.
 - `ivars`: Independent variables at which to evaluate the grid into `grid`. These maybe be a function that maps `[0, 1] → [0, 1]` or else a one-dimensional array (or ndarray) of length equal to the corresponding dimension of `grid`. If not specified, the grid is evaluated with uniform spacing from 0 to 1.
 
+# To do
+
+- option for linear interpolation (instead of Lagrange interpolation)
+- boundary derivative
+- lots of tests!
+
+
 ## See also
 
 - [ndarray-vector-fill](https://github.com/scijs/ndarray-vector-fill)

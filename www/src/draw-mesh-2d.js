@@ -15,9 +15,10 @@ module.exports = function drawMesh2d (regl, mesh, edges, options) {
     createLines(regl, vectorFill(zeros([mesh.shape[1], 3], 'float32'), (k) => e(k / (mesh.shape[1] - 1))), attrs),
   ])), 2));
 
+  options.camera = options.camera || {};
   const camera = createCamera2d(regl, {
-    center: options.center || [0.5, 0.5],
-    zoom: 1.2
+    center: options.camera.center || [0.5, 0.5],
+    zoom: options.camera.zoom || 1.2
   });
 
   const drawLines = regl({
