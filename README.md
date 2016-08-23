@@ -14,7 +14,7 @@ Given a set of functions bounding a domain (as well as internal contours, if des
 
 ## Example
 
-To create a planar mesh in two dimensions, imagine a unit square parameterized by `[u, v]`, with `u ∈ [0, 1]`, and `v ∈ [0, 1]`. Each of the four edges is defined by a function of one variable. The input to transfinite interpolation is these functions. The easiest way to conceptualize it is as ordered pairs of opposing edges, the first set with `u` ommitted, then `v`.
+To create a planar mesh in two dimensions, specify functions defining the four edges. Each of the four edges is defined by a function of one variable. The easiest way to remember the sequence is as ordered pairs of opposing edges, the first set with `u` ommitted, then `v`.
 
 <p align="center">
   <a href="http://demos.rickyreusser.com/ndarray-transfinite-interpolation/square.html" target="_blank">
