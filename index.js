@@ -17,11 +17,11 @@ function lagrange (xi, x, j) {
   return prod;
 }
 
-function createTFI (bounds, t, vecDims) {
+function createTFI (bounds, t) {
   var i, j, k, func;
   var dims = bounds.length;
   var picker = [];
-  vecDims = vecDims || bounds.length;
+  var vecDims = bounds.length;
 
   t = t || [];
 
@@ -50,15 +50,17 @@ function createTFI (bounds, t, vecDims) {
           args.push(arguments[j]);
         }
 
-        for (j = 0; j < vecDims; j++) {
-          sum[j] = 0;
-        }
-
         for (j = 0; j < f.length; j++) {
           v = f[j].apply(null, args);
           alpha = lagrange(t[ii], xi, j);
 
-          for (k = 0; k < vecDims; k++) {
+          if (j === 0) {
+            for (k = 0; k < v.length; k++) {
+              sum[k] = 0;
+            }
+          }
+
+          for (k = 0; k < v.length; k++) {
             sum[k] += alpha * v[k];
           }
         }
@@ -66,7 +68,7 @@ function createTFI (bounds, t, vecDims) {
         if (fprev) {
           // Leading term:
           v = fprev.apply(null, allArgs);
-          for(j = 0; j < vecDims; j++) {
+          for(j = 0; j < v.length; j++) {
             sum[j] += v[j];
           }
 
@@ -76,7 +78,7 @@ function createTFI (bounds, t, vecDims) {
             v = fprev.apply(null, allArgs);
             alpha = lagrange(t[ii], xi, j);
 
-            for (k = 0; k < vecDims; k++) {
+            for (k = 0; k < v.length; k++) {
               sum[k] -= alpha * v[k];
             }
           }
@@ -126,9 +128,8 @@ function getIvars (ivars, shape) {
 
 function transfiniteInterpolation (A, bounds, t, ivars) {
   var dim = A.dimension - 1;
-  var vecDims = A.shape[A.shape.length - 1];
 
-  var func = createTFI(bounds, t, vecDims);
+  var func = createTFI(bounds, t);
   var ivars = getIvars(ivars, A.shape);
 
   vectorFill(A, function () {
@@ -136,7 +137,9 @@ function transfiniteInterpolation (A, bounds, t, ivars) {
       args[i] = ivars[i](arguments[i])
     }
 
-    return func.apply(null, args);
+    var a = func.apply(null, args);
+    //console.log('a:', a);
+    return a;
   });
 
   return A;
