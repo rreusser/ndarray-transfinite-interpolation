@@ -45,7 +45,6 @@ module.exports = function drawMesh2d (regl, mesh, edges, options) {
     uniforms: {
       color: regl.prop('lineColor')
     },
-    lineWidth: regl.prop('lineWidth'),
     count: regl.prop('count'),
     elements: regl.prop('elements')
   })
