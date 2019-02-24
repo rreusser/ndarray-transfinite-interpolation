@@ -17,7 +17,7 @@ Given a set of functions bounding a domain (as well as internal contours, if des
 To create a planar mesh in two dimensions, specify functions defining the four edges. Each of the four edges is defined by a function of one variable. The easiest way to remember the sequence is as ordered pairs of opposing edges, the first set with `u` ommitted, then `v`.
 
 <p align="center">
-  <a href="http://demos.rickyreusser.com/ndarray-transfinite-interpolation/square.html" target="_blank">
+  <a href="https://rreusser.github.io/ndarray-transfinite-interpolation/square.html" target="_blank">
     <img width="200" src="www/src/images/square.png">
     <br>
     Try it out (click button to edit on codepen) →
@@ -66,7 +66,7 @@ tfi(zeros([11, 11, 2]), [[
 Now we can get creative. So far we've defined edges, but you can also define internal curves through which the grid passes.
 
 <p align="center">
-  <a href="http://demos.rickyreusser.com/ndarray-transfinite-interpolation/square3.html" target="_blank">
+  <a href="https://rreusser.github.io/ndarray-transfinite-interpolation/square3.html" target="_blank">
     <img width="200" src="www/src/images/square3.png">
     <br>
     Try it out →
@@ -91,7 +91,7 @@ Notice that although we've defined a straight line through the center, the grid 
 By passing an additional array of arrays, you can specify the parameter values at which the respective curves are defined:
 
 <p align="center">
-  <a href="http://demos.rickyreusser.com/ndarray-transfinite-interpolation/square4.html" target="_blank">
+  <a href="https://rreusser.github.io/ndarray-transfinite-interpolation/square4.html" target="_blank">
     <img width="200" src="www/src/images/square4.png">
     <br>
     Try it out →
@@ -118,7 +118,7 @@ const A = tfi(zeros([11, 11, 2]), edges, t);
 Finally you can pass functions that map `[0, 1] ⟶ [0, 1]` or else an ndarray or array of matching length that defines the parameter values at which the respective curves are *evaluated*:
 
 <p align="center">
-  <a href="http://demos.rickyreusser.com/ndarray-transfinite-interpolation/square5.html" target="_blank">
+  <a href="https://rreusser.github.io/ndarray-transfinite-interpolation/square5.html" target="_blank">
     <img width="200" src="www/src/images/square5.png">
     <br>
     Try it out →
@@ -145,7 +145,7 @@ const A = tfi(zeros([11, 11, 2]), edges, null, mapping);
 There's no reason to constrain things to two dimensions. You can interpolate a surface in three dimensions:
 
 <p align="center">
-  <a href="http://demos.rickyreusser.com/ndarray-transfinite-interpolation/surface.html" target="_blank">
+  <a href="https://rreusser.github.io/ndarray-transfinite-interpolation/surface.html" target="_blank">
     <img width="300" src="www/src/images/surface.png">
     <br>
     Try it out →
@@ -157,7 +157,7 @@ There's no reason to constrain things to two dimensions. You can interpolate a s
 So far we've done surfaces in two or three dimensions. To create a volumetric mesh in three dimensions, imagine a cube parameterized by `[u, v, w]`, with `u ∈ [0, 1]`, `v ∈ [0, 1]`, and `w ∈ [0, 1]`. Each of the six faces is defined by a two-dimensional function. The input to transfinite interpolation is these functions. The easiest way to conceptualize it is as ordered pairs of opposing faces, the first set with `u` ommitted, then `v`, then finally with `w` ommitted.
 
 <p align="center">
-  <a href="http://demos.rickyreusser.com/ndarray-transfinite-interpolation/cube.html" target="_blank">
+  <a href="https://rreusser.github.io/ndarray-transfinite-interpolation/cube.html" target="_blank">
     <img width="300" src="www/src/images/cube.png">
     <br>
     Try it out →
@@ -184,7 +184,7 @@ tfi(zeros([11, 11, 11, 3]), faces);
 Get fancy. One thing to watch for is that it's very easy to define curves that don't actually meet where they claim to. If they don't match up, you'll still get a decent result, but it might not be what you expect.
 
 <p align="center">
-  <a href="http://demos.rickyreusser.com/ndarray-transfinite-interpolation/volume.html" target="_blank">
+  <a href="https://rreusser.github.io/ndarray-transfinite-interpolation/volume.html" target="_blank">
     <img width="300" src="www/src/images/volume.png">
     <br>
     Try it out →
