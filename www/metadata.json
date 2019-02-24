@@ -12,8 +12,8 @@
     "twitter:title": "ndarray-transfinite-interpolation",
     "twitter:site": "@rickyreusser",
     "twitter:description": "Fill an n-dimensional array by interpolating functions that define the boundaries",
-    "twitter:image": "http://demos.rickyreusser.com/ndarray-transfinite-interpolation/images/screenshot.png",
-    "og:image": "http://demos.rickyreusser.com/ndarray-transfinite-interpolation/images/screenshot.png",
+    "twitter:image": "https://rreusser.github.io/ndarray-transfinite-interpolation/images/screenshot.png",
+    "og:image": "https://rreusser.github.io/ndarray-transfinite-interpolation/images/screenshot.png",
     "og:site_name": "ndarray-transfinite-interpolation",
     "og:title": "ndarray-transfinite-interpolation",
     "og:description": "Fill an n-dimensional array by interpolating functions that define the boundaries"
